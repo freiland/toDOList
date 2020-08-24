@@ -6,7 +6,7 @@ function listArr(){
 function item (task){
   this.task = task;
   //this.notes = notes;
-  //this.complete = false;
+  this.complete = false;
 }
 
 listArr.prototype.addItem = function(task){
@@ -39,11 +39,10 @@ listArr.prototype.findItem = function(id){
   };
   return false;
 }
-//list.prototype.complete = function(){
-  //if item is complete return true
- // if(Jquery click submit function){
-  //  this.complete = true;
- // }
+listArr.prototype.complete = function(){
+  this.complete = true;
+}
+
 
 let newList = new listArr()
 $(document).ready(function(){
