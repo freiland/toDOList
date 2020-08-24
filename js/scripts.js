@@ -1,38 +1,60 @@
-function toDo (task,notes){
-  this.task = task;
-  this.notes = notes;
-  this.complete = false;
-}
 function listArr(){
-  this.list = [];
+  this.items = [];
   this.currentId= 0;
 }
-list.prototype.addItem = function(item){
-  item.id =this.assignId();
-  this.list.push(id);
+
+function item (task){
+  this.task = task;
+  //this.notes = notes;
+  //this.complete = false;
 }
-list.prototype.assignId()= function(){
+
+listArr.prototype.addItem = function(task){
+  task.id =this.assignId();
+  this.items.push(item);
+}
+
+listArr.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
 }
 
-list.prototype.removeItem = function(id) {
+
+listArr.prototype.removeItem = function(id) {
   for(let i = 0; i< this.list.length; i++){
-    if(this.list[i]==id){
-      delete this.list[i];
+    if(this.items[i]==id){
+      delete this.items[i];
       return true;
     }
   }
   return false;
 }
-list.prototype.findItem = function(id){
-  for(let i =0; i < this.list.length;i++){
-    if(this.list[i].id==id){
-      return this.list[i];
+listArr.prototype.findItem = function(id){
+  for(let i =0; i < this.items.length;i++){
+    if(this.items[i].id==id){
+      return this.items[i];
     }
   };
   return false;
 }
-list.prototype.complete = function(){
-  
-}
+//list.prototype.complete = function(){
+  //if item is complete return true
+ // if(Jquery click submit function){
+  //  this.complete = true;
+ // }
+
+let newList = new listArr()
+$(document).ready(function(){
+  $('form#question').submit(function(event){
+    event.preventDefault();
+    let newTask = $("#item").val();
+    let tasks = new item(newTask);
+    alert(tasks);
+    newList.additem(tasks);
+    alert(newList);
+    
+  })
+
+})
+
+
