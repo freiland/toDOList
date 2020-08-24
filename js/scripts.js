@@ -11,7 +11,7 @@ function item (task){
 
 listArr.prototype.addItem = function(task){
   task.id =this.assignId();
-  this.items.push(item);
+  this.items.push(task);
 }
 
 listArr.prototype.assignId = function() {
@@ -49,9 +49,8 @@ $(document).ready(function(){
     event.preventDefault();
     let newTask = $("#item").val();
     let tasks = new item(newTask);
-    alert(tasks);
-    newList.additem(tasks);
-    alert(newList);
+    newList.addItem(tasks);
+    console.log(newList);
     
   })
 
