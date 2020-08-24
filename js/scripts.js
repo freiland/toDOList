@@ -5,7 +5,6 @@ function listArr(){
 
 function item (task){
   this.task = task;
-  //this.notes = notes;
   this.complete = false;
 }
 
@@ -39,22 +38,30 @@ listArr.prototype.findItem = function(id){
   };
   return false;
 }
-listArr.prototype.complete = function(){
-  this.complete = true;
+listArr.prototype.complete = function(id){
+  for(let i =0; i < this.items.length;i++){
+    if(this.items[i].id==id){
+      this.complete = true;
+  };
+ 
+}
+return false;
 }
 
 
+
 let newList = new listArr()
+
+
 $(document).ready(function(){
   $('form#question').submit(function(event){
     event.preventDefault();
-    let newTask = $("#item").val();
-    let tasks = new item(newTask);
-    newList.addItem(tasks);
-    console.log(newList);
-    
-  })
-
+    let newItem = new item($("#item").val())
+    newList.addItem(newItem);
+    $("#list").append("<li>" + newItem.task + "</li>");
+})
 })
 
-
+$('list').on('click', 'li', function(){
+  let 
+}
