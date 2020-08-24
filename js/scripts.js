@@ -21,12 +21,14 @@ listArr.prototype.assignId = function() {
 
 
 listArr.prototype.removeItem = function(id) {
-  for(let i = 0; i< this.list.length; i++){
-    if(this.items[i]==id){
-      delete this.items[i];
-      return true;
+  for(let i = 0; i< this.items.length; i++){
+    if(this.items[i]){
+      if(this.items[i].id == id){
+        delete this.items[i];
+        return true;
+      }
     }
-  }
+  };
   return false;
 }
 listArr.prototype.findItem = function(id){
